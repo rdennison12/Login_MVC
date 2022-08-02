@@ -4,3 +4,4 @@
 
 * Initial commit - Repo created
 * Project created with .gitignore
+* .htaccess created
