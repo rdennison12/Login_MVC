@@ -1,0 +1,17 @@
+{
+  "authors": [
+    {
+      "name": "rick",
+      "email": "rdennison12@gmail.com"
+    }
+  ],
+  "require": {
+    "twig/twig": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "Core/",
+      "App\\": "App/"
+    }
+  }
+}

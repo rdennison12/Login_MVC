@@ -3,8 +3,13 @@
  * Created by Rick Dennison
  * Date:      8/2/22
  *
- * File Name: index.php
+ * File Name: Router.php
  * Project:   Login-MVC-2022
  */
 
-echo 'Hello, World!';
+namespace Core;
+
+class Router
+{
+
+}
