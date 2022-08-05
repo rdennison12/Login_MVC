@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block head %}
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://kit.fontawesome.com/e89ca8ca8d.js" crossorigin="anonymous"></script>
+    <style>
+        #btn-back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+        }
+    </style>
+<!--    <link rel="shortcut icon" href="#">-->
+<!--    <link type="text/css" rel="stylesheet" href="/css/styles.css"/>-->
+<!--    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">-->
+<!--    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">-->
+<!--    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">-->
+<!--    <link rel="manifest" href="/site.webmanifest">-->
+
+
+    <!-- End head block-->
+    {% endblock %}
+
+
+</head>
+<body>
+<div class="container">
+
+    <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top"><i
+            class="fas fa-arrow-up"></i></button>
+    {% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/About/index">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Posts/index">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Contact/index">Contact</a>
+                    </li>
+                    <!-- Create links for administrators in this block -->
+                    {% if current_user.is_admin %}
+                    <li class="nav-item">
+                        <a href="/Admin/Administration/admin" class="nav-link">Administration</a>
+                    </li>
+                    {% endif %}
+                    <!-- Create links for administrators in above block -->
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    {% if current_user %}
+                    <li class="nav-item">
+                        <a href="/profile/show" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Log Out</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="/Signup/new" class="nav-link">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Login/login" class="nav-link">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% for message in flash_messages %}
+    <div class="alert alert-{{ message.type}}">
+        <span class="closebtn" style="align-content: flex-end" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{ message.body }}
+    </div>
+    {% endfor %}
+
+    {% endblock %}
+
+    <!-- All Bootstrap, JavaScript, and jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
+            integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+            integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+            integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+            crossorigin="anonymous"></script>
+    <script>
+        let backToTop = document.getElementById("btn-back-to-top");
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        }
+
+        backToTop.addEventListener("click", topFunction)
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+</div> <!-- End container -->
+<div class="footer container">
+    {% block footer %}   {% endblock %}
+    This site was designed and created by Rick Dennison
+    Copyright &copy; <span id="created_on"></span><span id="furYear"></span>
+
+    <script>
+        let dteNow = new Date();
+        // let currYear = dteNow.getFullYear();
+        let currYear = '2021';
+        let furYear = dteNow.getFullYear().toString();
+
+        if (!(currYear === furYear)) {
+            document.getElementById("created_on").innerHTML = currYear;
+            document.getElementById("furYear").innerHTML = ' - ' + furYear;
+        } else {
+            document.getElementById("created_on").innerHTML = currYear;
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+
+    </script>
+
+
+</div><!-- End footer div -->
+
+</body>
+</html>
