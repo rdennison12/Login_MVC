@@ -7,4 +7,24 @@
  * Project:   Login-MVC-2022
  */
 
-echo 'Hello, World!';
+/**
+ * Autoloader
+ */
+
+
+/**
+ * Error and Exception handling
+ */
+
+/**
+ * Sessions
+ */
+
+/**
+ * Routing
+ */
+
+/**
+ * Routing Table
+ * To include routes for logging in and out, and dispatching URLs
+ */

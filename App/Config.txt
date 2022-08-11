@@ -1,0 +1,42 @@
+    /**
+    *  add the DB name, username, and password
+    */
+    /**
+     * Database host
+     * Default host name change if different
+     * locally or on hosting server
+     * @var string
+     */
+    const DB_HOST = 'localhost';
+
+    /**
+     * Database name
+     * @var string
+     */
+    const DB_NAME = 'YourDBName';
+
+    /**
+     * Database user
+     * @var string
+     */
+    const DB_USER = 'YourDBUsername';
+
+    /**
+     * Database password
+     * @var string
+     */
+    const DB_PASSWORD = 'YourDBPassword';
+
+    /**
+         * Show or hide error messages on screen
+         * True for development false for production
+         * @var boolean
+         */
+        const SHOW_ERRORS = true;
+
+        /**
+         * Secret key for hashing
+         * @var boolean
+         */
+        const SECRET_KEY = 'your-secret-key';
+}
