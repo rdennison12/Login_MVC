@@ -10,7 +10,7 @@
 /**
  * Autoloader
  */
-
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 /**
  * Error and Exception handling
@@ -23,8 +23,9 @@
 /**
  * Routing
  */
-
+$router = new Core\Router();
 /**
  * Routing Table
  * To include routes for logging in and out, and dispatching URLs
  */
+$router->add('', ['controller'=>'Home', 'action'=>'index']);

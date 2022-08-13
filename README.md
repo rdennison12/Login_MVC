@@ -9,3 +9,4 @@
 * Created all files and folders to create a basic MVC application
 * Begin to write code for initial project
 * Moved online repo to GitLab
+* Begin coding front controller and Router class
