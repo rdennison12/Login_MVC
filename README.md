@@ -11,3 +11,5 @@
 * Moved online repo to GitLab
 * Begin coding front controller and Router class
 * Completed Router class for testing
+* Completed the Core/Controller class
+  * The redirect function to be completed as the project progresses
