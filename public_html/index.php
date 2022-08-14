@@ -29,3 +29,8 @@ $router = new Core\Router();
  * To include routes for logging in and out, and dispatching URLs
  */
 $router->add('', ['controller'=>'Home', 'action'=>'index']);
+
+try {
+    $router->dispatch($_SERVER['QUERY_STRING']);
+} catch (Exception $e) {
+}
